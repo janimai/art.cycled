@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>art.cycled - unique upcycling pieces</title>
+  <!-- Roboto Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green-dark: #2D5A4C;
+      --green-light: #D4E6D2;
+      --beige-bg: #ffffff;
+      --gold: #C4A25A;
+      --text: #2B2B2B;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--beige-bg); color: darkgreen; line-height: 1.6; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: var(--beige-bg); padding: 15px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex; justify-content: space-between; align-items: center; font-weight: 600;
+      z-index: 100;
+    }
+    .nav-left { display: flex; gap: 40px; }
+    .nav-right img.insta-icon { width: 25px; height: 25px; transition: opacity 0.3s; cursor: pointer; }
+    .nav-right img.insta-icon:hover { opacity: 0.7; }
+    nav a { color: var(--green-dark); text-decoration: none; font-size: 1.1rem; transition: color 0.3s; }
+    nav a:hover { color: var(--gold); }
+
+    header {
+      background-image: url('assets/img/affe8.jpg'); background-size: cover; background-repeat: no-repeat;
+      padding: 80px 40px 300px; text-align: center; position: relative;
+    }
+    header::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.05); z-index: 0;
+    }
+    header h1, header p { position: relative; z-index: 1; }
+
+    section { max-width: 960px; margin: 80px auto; padding: 0 20px; }
+    section h2 {
+      font-size: 2.0rem; color: var(--green-dark); margin-bottom: 20px;
+      border-bottom: none; display: inline-block; padding-bottom: 6px;
+    }
+    #about p { max-width: 650px; font-size: 1.15rem; }
+
+    .gallery {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px;
+    }
+    .gallery img {
+      width: 100%; border-radius: 10px; border: 3px solid var(--gold);
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer;
+    }
+    .gallery img:hover { transform: scale(1.05); border-color: var(--green-dark); }
+
+    .gallery-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem; /* kleiner Text */
+  color: var(--green-dark);
+  margin-top: 6px;
+  padding: 0 4px;
+}
+
+    #contact p, #contact a { font-size: 1.15rem; max-width: 650px; display: block; margin-bottom: 10px; }
+    #contact a { color: var(--green-dark); font-weight: 700; text-decoration: none; border-bottom: 2px solid transparent; transition: border-color 0.3s; }
+    #contact a:hover { border-color: var(--gold); color: var(--gold); }
+
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      color: white !important; background-color: var(--green-dark);
+      border: none; border-radius: 5px; padding: 6px 12px; font-weight: 700; font-size: 1.1rem;
+      cursor: pointer; margin-top: 35px; text-decoration: none; font-family: 'Roboto', sans-serif;
+      width: 160px; white-space: nowrap; transition: background-color 0.3s, color 0.3s;
+    }
+    .button:hover { background-color: var(--gold); color: var(--green-dark) !important; }
+
+    .contact-info { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+    .contact-info p { margin: 0; }
+
+    footer { text-align: center; background-color: var(--green-dark); color: var(--beige-bg); padding: 30px 20px; margin-top: 60px; font-size: 0.9rem; }
+
+    @media (max-width: 600px) {
+      nav { gap: 20px; font-size: 0.9rem; padding: 15px 15px; }
+      header h1 { font-size: 2.5rem; }
+      section { margin: 60px 15px; }
+      .contact-info { flex-direction: column; }
+    }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(3, 43, 17, 0.85); display: flex; justify-content: center; align-items: center;
+      z-index: 200; cursor: pointer; display: none;
+    }
+    #lightbox img {
+      width: auto;
+      height: 90vh; /* 90% der Viewport-Höhe */
+      max-width: 95vw; /* maximal 95% der Viewport-Breite */
+      border: 5px solid var(--gold);
+      border-radius: 10px;
+    }
+    #lightbox-close {
+      position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="#about">Über mich</a>
+    <a href="#gallery">Spiegel</a>
+    <a href="#contact">Kontakt</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://instagram.com/deinprofil" target="_blank" rel="noopener">
+      <img src="assets/img/instalogo/icon-1562139_1280.png" alt="Instagram" class="insta-icon">
+    </a>
+  </div>
+</nav>
+
+<header>
+  <h1><span class="gold"></span><span class="green"></span></h1>
+  <p></p>
+</header>
+
+<section id="about">
+  <h2>Ein Blick ins Herz</h2>
+  <p>Manche Dinge tragen mehr in sich, als man auf den ersten Blick sieht. Fundstücke mit Geschichte werden verwandelt.<br>
+  Es geht nicht darum, etwas zu reparieren – sondern darum, Schönheit neu sichtbar zu machen.<br><br>
+  Jedes Stück entsteht aus der Freude am Entdecken und Gestalten. Nachhaltigkeit ist dabei kein Trend, sondern Haltung.<br><br>
+  Ich bin Janine – Kommunikationsdesignerin, Illustratorin und Künstlerin.<br>
+  Meine Werke verbinden einen Art-Déco-Stil mit natürlichen Formen, illustrative Gestaltung und Liebe zum Detail.<br>
+  Sie erzählen von dem Wert, der in Dingen und Momenten steckt.</p>
+</section>
+
+<section id="gallery">
+  <h2>Spiegel entdecken</h2>
+  <div class="gallery">
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/hummeln.jpg" alt="Upcycling Spiegel 2" />
+    <div class="caption"><span class="title">Hummeln</span><span class="price">50,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/bienen.jpg" alt="Upcycling Spiegel Bienen" />
+    <div class="caption"><span class="title">Bienen</span><span class="price">70,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/eulen3.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Eulen</span><span class="price">70,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/quallen.jpg" alt="Upcycling Spiegel 1" />
+    <div class="caption"><span class="title">Quallen</span><span class="price">210,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/fledermause1.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Fledermäuse</span><span class="price">130,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/ranken.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Blumenranke</span><span class="price">90,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/affen.jpg" alt="Upcycling Spiegel 1" />
+    <div class="caption"><span class="title">Affen groß</span><span class="price">390,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/pilze1.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Märchen</span><span class="price">550,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/schädel.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Schädel</span><span class="price">210,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/käfer.jpg" alt="Upcycling Spiegel 1" />
+    <div class="caption"><span class="title">Käfer</span><span class="price">30,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/Motten1.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Motten</span><span class="price">90,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/froesche.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Frösche</span><span class="price">110,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/Echsen.jpg" alt="Upcycling Spiegel 1" />  
+    <div class="caption"><span class="title">Echsen</span><span class="price">90,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/Affen_klein.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Affen klein</span><span class="price">€110,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/schlange2.jpg" alt="Upcycling Spiegel 1" />  
+    <div class="caption"><span class="title">Schlangen</span><span class="price">180,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/astronaut.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Astronaut</span><span class="price">120,-€</span></div>
+  </div>
+  <div class="gallery-item">
+    <img src="assets/img/1080x1080JPEG/universum.jpg" alt="Upcycling Spiegel 3"/>
+    <div class="caption"><span class="title">Universum</span><span class="price">220,-€</span></div>
+  </div>
+</div>
+</section>
+
+<section id="contact">
+  <h2>Ich freue mich von dir zu hören!</h2>
+  <p>Hast du dich in einen Spiegel verliebt – dann schreib mir! <br>
+    Oder hast du ein besonderes Stück, das eine zweite Geschichte verdient?<br><br>
+   Upcycling, Illustrationen oder ein völlig neues Projekt:<br> Ich freue mich auf deine Ideen.</p>
+  
+
+  <!-- Button -->
+  <a href="mailto:atelier.maibaum@mail.de" class="button">Deine Nachricht</a><br><br>
+
+  <!-- Instagram + E-Mail nebeneinander -->
+  <div class="contact-info"></div>
+</section>
+
+<footer>
+  <p>© 2025 Maibaum – Kunst & Nachhaltigkeit im Einklang</p>
+</footer>
+
+<!-- Lightbox Container -->
+<div id="lightbox">
+  <span id="lightbox-close">&times;</span>
+  <img src="" alt="Vergrößertes Bild" />
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  // Auch Schließen, wenn man auf den Hintergrund klickt
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>

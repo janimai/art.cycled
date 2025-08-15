@@ -1,0 +1,236 @@
+:root {
+  --green-dark: #2D5A4C;
+  --green-light: #D4E6D2;
+  --beige-bg: #ffffff;
+  --gold: #C4A25A;
+  --text: #2B2B2B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--beige-bg);
+  color: darkgreen;
+  line-height: 1.6;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--beige-bg);
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  z-index: 100;
+}
+
+.nav-left {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-right img.insta-icon {
+  width: 25px;
+  height: 25px;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.nav-right img.insta-icon:hover {
+  opacity: 0.7;
+}
+
+nav a {
+  color: var(--green-dark);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+/* HEADER */
+header {
+  background-image: url('assets/img/affe5.jpg');
+  background-position: center;
+  padding: 0px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--gold);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.05);
+  z-index: 0;
+}
+
+header h1, header p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+/* art.deco kleiner machen */
+header h1 {
+  font-size: 2.5rem; /* vorher 3.3rem */
+  margin-bottom: 15px;
+}
+
+header p {
+  font-size: 1.2rem; /* kleiner */
+}
+
+section {
+  max-width: 960px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+section h2 {
+  font-size: 2.0rem;
+  color: var(--green-dark);
+  margin-bottom: 20px;
+  border-bottom: 3px solid var(--gold);
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+#about p {
+  max-width: 650px;
+  font-size: 1.15rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 24px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  border: 3px solid var(--gold);
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  border-color: var(--green-dark);
+}
+
+#contact p, #contact a {
+  font-size: 1.15rem;
+  max-width: 650px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+#contact a {
+  color: var(--green-dark);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+#contact a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Button */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white !important;
+  background-color: var(--green-dark);
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 35px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  width: 160px;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: var(--gold);
+  color: var(--green-dark) !important;
+}
+
+/* Kontaktinfos nebeneinander */
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.contact-info p {
+  margin: 0;
+}
+
+.insta-icon {
+  width: 35px;
+  height: 35px;
+  transition: opacity 0.3s;
+}
+
+.insta-icon:hover {
+  opacity: 0.7;
+}
+
+footer {
+  text-align: center;
+  background-color: var(--green-dark);
+  color: var(--beige-bg);
+  padding: 30px 20px;
+  margin-top: 60px;
+  font-size: 0.9rem;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  nav {
+    gap: 20px;
+    font-size: 0.9rem;
+    padding: 15px 15px;
+  }
+  header h1 {
+    font-size: 1.8rem; /* kleiner auf Mobile */
+  }
+  header p {
+    font-size: 1rem;
+  }
+  section {
+    margin: 60px 15px;
+  }
+  .contact-info {
+    flex-direction: column;
+  }
+}
