@@ -21,20 +21,31 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       background: var(--beige-bg); padding: 15px 30px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(5, 36, 18, 0.1);
       display: flex; justify-content: space-between; align-items: center; font-weight: 600;
       z-index: 100;
     }
     .nav-left { display: flex; gap: 40px; }
-    .nav-right img.insta-icon { width: 25px; height: 25px; transition: opacity 0.3s; cursor: pointer; }
+    .nav-right img.insta-icon { 
+  width: 20px; 
+  height: 20px; 
+  transition: opacity 0.3s; 
+  cursor: pointer; 
+  filter: invert(27%) sepia(42%) saturate(314%) hue-rotate(105deg) brightness(85%) contrast(85%);
+}
     .nav-right img.insta-icon:hover { opacity: 0.7; }
     nav a { color: var(--green-dark); text-decoration: none; font-size: 1.1rem; transition: color 0.3s; }
     nav a:hover { color: var(--gold); }
 
     header {
-      background-image: url('assets/img/affe8.jpg'); background-size: cover; background-repeat: no-repeat;
-      padding: 80px 40px 300px; text-align: center; position: relative;
-    }
+  background-image: url('assets/img/affe8.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; /* <--- hier mittig ausrichten */
+  padding: 80px 40px 300px;
+  text-align: center;
+  position: relative;
+}
     header::before {
       content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background-color: rgba(0,0,0,0.05); z-index: 0;
@@ -92,7 +103,11 @@
     @media (max-width: 600px) {
       nav { gap: 20px; font-size: 0.9rem; padding: 15px 15px; }
       header h1 { font-size: 2.5rem; }
-      section { margin: 60px 15px; }
+      section { 
+  max-width: 960px; 
+  margin: 80px auto;  /* <-- hier */
+  padding: 0 20px; 
+}
       .contact-info { flex-direction: column; }
     }
 
@@ -112,6 +127,10 @@
     #lightbox-close {
       position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer;
     }
+
+    #about h2 {
+  margin-top: 0;  /* entfernt zusätzlichen Abstand oben */
+}
   </style>
 </head>
 <body>
@@ -123,7 +142,7 @@
     <a href="#contact">Kontakt</a>
   </div>
   <div class="nav-right">
-    <a href="https://instagram.com/deinprofil" target="_blank" rel="noopener">
+    <a href="https://instagram.com/janine_maibaum?igsh=d3U5em0ydDdia2Mw" target="_blank" rel="noopener">
       <img src="assets/img/instalogo/icon-1562139_1280.png" alt="Instagram" class="insta-icon">
     </a>
   </div>
