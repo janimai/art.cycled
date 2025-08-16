@@ -319,8 +319,8 @@ nav ul.active {
   });
 
   const menuToggle = document.querySelector('.menu-toggle');
-const menu = document.querySelector('nav ul'); // oder der Container deines Menüs
-const menuLinks = document.querySelectorAll('nav ul li a'); // alle Links im Menü
+const menu = document.querySelector('.nav-left'); // der Container deiner Links
+const menuLinks = document.querySelectorAll('.nav-left a'); // alle Links
 
 // Menü öffnen/schließen beim Klick auf das Hamburger-Icon
 menuToggle.addEventListener('click', () => {
