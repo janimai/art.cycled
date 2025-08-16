@@ -308,6 +308,13 @@
       lightbox.style.display = 'none';
     }
   });
+
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLeft = document.querySelector('.nav-left');
+
+  menuToggle.addEventListener('click', () => {
+    navLeft.classList.toggle('active');
+  });
 </script>
 
 </body>
