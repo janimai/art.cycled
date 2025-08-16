@@ -128,6 +128,15 @@
       position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer;
     }
 
+    /* mobile fix: Bild in der Lightbox nicht in die Höhe strecken  */
+@media (max-width: 600px) {
+  #lightbox img {
+    height: auto;
+    width: 95vw;      /* Bild passt sich der gesamten Breite an */
+    max-height: 90vh;
+  }
+}
+
     #about h2 {
   margin-top: 0;  /* entfernt zusätzlichen Abstand oben */
 }
@@ -246,7 +255,7 @@
 
    <p>atelier.maibaum@mail.de</p>
   <!-- Button -->
-  <a href="mailto:atelier.maibaum@mail.de" class="button">Deine Nachricht</a><br><br>
+  <a href="mailto:atelier.maibaum@mail.de?subject=Anfrage%20über%20die%20Website&body=Hallo%20Janine,%0D%0A%0D%0AIch%20interessiere%20mich%20für%20einen%20Spiegel%20oder%20ein%20individuelles%20Projekt.%0D%0ADeine%20E-Mail-Adresse:%20atelier.maibaum@mail.de" class="button">Deine Nachricht</a><br><br>
   
 
   <!-- Instagram + E-Mail nebeneinander -->
