@@ -62,9 +62,18 @@ nav ul.active {
 
     section { max-width: 960px; margin: 80px auto; padding: 0 20px; }
     section h2 {
-      font-size: 2.0rem; color: var(--green-dark); margin-bottom: 20px;
-      border-bottom: none; display: inline-block; padding-bottom: 6px;
+      font-size: 2.0rem;
+  color: var(--green-dark);
+  margin-bottom: 14px; /* statt 20px */
+  border-bottom: none;
+  display: inline-block;
+  padding-bottom: 6px;
     }
+    section p {
+  margin-top: 0;  /* verhindert zusätzlichen Abstand oben */
+  margin-bottom: 1em;
+}
+
     #about p { max-width: 650px; font-size: 1.15rem; }
 
     /* Hamburger toggle (hidden on desktop) */
